@@ -6,8 +6,6 @@
 package de.zray.zgui;
 
 import java.util.UUID;
-import org.lwjgl.opengl.Display;
-import static org.lwjgl.opengl.GL11.*;
 
 /**
  *
@@ -58,50 +56,6 @@ public abstract class GUIItem{
     
     public boolean intersect(int pointerX, int pointerY){
         return hitbox.hit(pointerX, pointerY);
-    }
-    
-    public void render(){
-        if(displayList == -1){
-            createDisplayList();
-        }
-        if(material != null){
-            material.applyMaterial();
-        }
-        
-        glTranslatef(ori.posX*Display.getWidth(), ori.posY*Display.getHeight(), ori.posZ);
-        glRotatef(ori.rotX, 1, 0, 0);
-        glRotatef(ori.rotY, 1, 1, 0);
-        glRotatef(ori.rotZ, 0, 0, 1);
-        glScalef(ori.scaleX, ori.scaleY, ori.scaleZ);
-        glCallList(displayList);
-        
-        if(text != null){
-            glPushMatrix();
-            float posCorrection = 0;
-            if(text.getFont() != null){
-                posCorrection = (float) text.getFont().getLineHeight()/4f;
-            }
-            glTranslatef(0, -posCorrection, 0);
-            text.drawText();
-            glColor3f(1, 1, 1);
-            glPopMatrix();
-        }
-    };
-    
-    private void createDisplayList(){
-        displayList = glGenLists(1);
-        glNewList(displayList, GL_COMPILE);
-        glBegin(GL_QUADS);
-        glTexCoord2f(0, 0);
-        glVertex2f(-ori.halfWidth, ori.halfHeight);
-        glTexCoord2f(1, 0);
-        glVertex2f(ori.halfWidth, ori.halfHeight);
-        glTexCoord2f(1, 1);
-        glVertex2f(ori.halfWidth, -ori.halfHeight);
-        glTexCoord2f(0, 1);
-        glVertex2f(-ori.halfWidth, -ori.halfHeight);
-        glEnd();
-        glEndList();
     }
     
     public void setClosable(boolean b){

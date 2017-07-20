@@ -5,8 +5,6 @@
  */
 package de.zray.zgui;
 
-import org.lwjgl.opengl.Display;
-
 /**
  *
  * @author vortex
@@ -26,11 +24,11 @@ public class Hitbox {
     }
     
     public boolean hit(float x, float y){
-        if(x >= ori.posX*Display.getWidth()-ori.halfWidth*ori.scaleX && x <= ori.posX*Display.getWidth()+ori.halfWidth*ori.scaleX){
+        /*if(x >= ori.posX*Display.getWidth()-ori.halfWidth*ori.scaleX && x <= ori.posX*Display.getWidth()+ori.halfWidth*ori.scaleX){
             if(y >= ori.posY*Display.getHeight()-ori.halfHeight*ori.scaleY && y <= ori.posY*Display.getHeight()+ori.halfHeight*ori.scaleY){
                 return true;
             }
-        }
+        }*/
         return false;
     }
     
