@@ -1,7 +1,5 @@
 /nbproject/private/
-<<<<<<< OURS
+/nbproject/
 /build/
-=======
-/build/
+/build.xml
 /dist/
->>>>>>> THEIRS
