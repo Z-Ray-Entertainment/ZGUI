@@ -8,7 +8,6 @@ package de.zray.zgui;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.UUID;
-import static org.lwjgl.opengl.GL11.*;
 
 /**
  *
